@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('checkout code') {
             steps {
-                git branch:"master",credentialsId:"084a65ed-4de5-42a1-87ea-8391e766fc22", url: "https://github.com/sunilnagavelli/helloworld.git"
+                //git branch:"master",credentialsId:"084a65ed-4de5-42a1-87ea-8391e766fc22", url: "https://github.com/sunilnagavelli/helloworld.git"
+                checkout scm
             }
         }
         stage('Env setup'){
@@ -47,7 +48,7 @@ pipeline {
             }
         }
     }
-        post {
+    post {
         always {
             echo 'Job execution completed'
             deleteDir() /* clean up our workspace */
