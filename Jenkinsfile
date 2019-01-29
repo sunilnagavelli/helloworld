@@ -14,6 +14,7 @@ pipeline {
             steps{
                 script {
                     sh '''
+                        whoami && pwd
                         mvn --version
                         if [ "$?" -ne 0 ]; then
                             //whoami && pwd
