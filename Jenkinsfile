@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        M2_HOME='/var/jenkins_home/apache-maven-3.6.0'
+        M2_HOME='/opt/apache-maven-3.6.0'
     }
     stages {
         stage('checkout code') {
@@ -15,12 +15,12 @@ pipeline {
                 script {
                     sh '''
                         set +x
-                        if [ -z `$M2_HOME/bin/mvn --version 2>/dev/null`  ]; then
+                        if [ -z `mvn --version 2>/dev/null`  ]; then
                             whoami && pwd
                             wget --quiet http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
-                            unzip apache-maven-3.6.0-bin.zip -d /var/jenkins_home/ >/dev/null
-                            echo "Maven Path: `ls -d /var/jenkins_home/apache-maven-3.6.0/bin`"
-                            export PATH=$PATH:/var/jenkins_home/apache-maven-3.6.0/bin
+                            unzip apache-maven-3.6.0-bin.zip -d /opt >/dev/null
+                            echo "Maven Path: `ls -d /opt/apache-maven-3.6.0/bin`"
+                            export PATH=$PATH:/opt/apache-maven-3.6.0/bin
                             rm apache-maven-3.6.0-bin.zip
                         else
                             echo "mvn exists already"
