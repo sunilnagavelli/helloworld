@@ -14,15 +14,17 @@ pipeline {
             steps{
                 script {
                     sh '''
-                        if [ -z `mvn --version 2>/dev/null`  ]; then
-                            whoami && pwd
-                            wget --quiet http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
-                            unzip apache-maven-3.6.0-bin.zip -d /opt >/dev/null
-                            echo "Maven Path: `ls -d /opt/apache-maven-3.6.0/bin`"
-                            export PATH=$PATH:/opt/apache-maven-3.6.0/bin
-                            rm apache-maven-3.6.0-bin.zip
+                        mvn --version
+                        if [ "$?" -ne 0 ]; then
+                            //whoami && pwd
+                            //wget --quiet http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
+                            //unzip apache-maven-3.6.0-bin.zip -d /opt >/dev/null
+                            //echo "Maven Path: `ls -d /opt/apache-maven-3.6.0/bin`"
+                            //export PATH=$PATH:/opt/apache-maven-3.6.0/bin
+                            //rm apache-maven-3.6.0-bin.zip
+                            echo "Maven does not exists"
                         else
-                            echo "mvn exists already"
+                            echo "mvn check successful"
                             $M2_HOME/bin/mvn --version
                         fi
                     '''
