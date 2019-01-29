@@ -15,7 +15,7 @@ pipeline {
                 script {
                     sh '''
                         whoami && pwd
-                        mvn --version
+                        $M2_HOME/bin/mvn --version
                         if [ "$?" -ne 0 ]; then
                             //whoami && pwd
                             //wget --quiet http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
