@@ -14,7 +14,6 @@ pipeline {
             steps{
                 script {
                     sh '''
-                        set +x
                         if [ -z `mvn --version 2>/dev/null`  ]; then
                             whoami && pwd
                             wget --quiet http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
