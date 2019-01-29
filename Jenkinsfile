@@ -49,6 +49,15 @@ pipeline {
                 }
             }
         }
+        stage('artifacts') {
+            steps {
+                script {
+                    sh '''
+                        cp -r target/hello-world.war /usr/share/tomcat/webapps/
+                    '''
+                }
+            }
+        }
     }
     post {
         always {
