@@ -1,9 +1,5 @@
-@Library("jenkinsgl@master") _
-
 pipeline {
-  agent {
-    any
-  }
+  agent any
   stages {
     stage('Initalize') {
       echo 'Hello!'
